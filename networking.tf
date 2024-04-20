@@ -48,3 +48,9 @@ resource "azurerm_network_interface" "myNic" {
     environment = "terraform"
   }
 }
+
+#associate network security group with subnet
+resource "azurerm_subnet_network_security_group_association" "mySGAssociation" {
+  subnet_id                 = azurerm_subnet.subnet02.id
+  network_security_group_id = azurerm_network_security_group.mySG.id
+}
